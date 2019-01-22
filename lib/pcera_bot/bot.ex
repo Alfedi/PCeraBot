@@ -13,18 +13,23 @@ defmodule PceraBot.Bot do
   def handle({:command, "download", msg}, context) do
     url = msg.text
     if url != "" do # Necesita comprobar si la url no es válida, preguntar a alguien listo.
-      IO.puts("Parece que guay")
-      answer(context, "Se está procesando tu petición, por favor se paciente") # Por algún motivo no manda este mensaje cuando se está descargando el archivo
-      download(url, context)
+      download(url)
+      answer(context,"DONE")
     else
       answer(context, "Por favor usa una URL de youtube válida")
     end
   end
 
-  def download(url, context) do
-    :ssh.start
-    {:ok, conn} = SSHEx.connect # Opciones de conexión con el servidor. [Se necesita encontrar una forma de leerlo desde un archivo]
-    SSHEx.cmd! conn, "youtube-dl -x --audio-format mp3 --audio-quality 0 --embed-thumbnail --add-metadata " <> Kernel.inspect(url)
-    answer(context, "Ya se ha descargado la canción.")
+  def handle({:command, "ip", _msg}, context) do
+    chat = ExGram.Config.get(:pcera_bot, :canal)
+    ip = System.cmd("curl", ["https://ipinfo.io/ip"])
+    ExGram.send_message(chat, elem(ip, 0))
+    answer(context, "El mensaje se ha enviado por tu chat supermegaultrasecreto")
+  end
+  
+  def download(url) do
+    IO.puts("MAL, quiero mi mensaje")
+    System.cmd("youtube-dl",  ["--extract-audio", "--audio-format", "mp3", "--audio-quality", "0", "--embed-thumbnail", url], cd: "/home/alfedi/Música")
+    IO.puts("Acabado")
   end
 end

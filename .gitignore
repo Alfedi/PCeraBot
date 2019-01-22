@@ -25,3 +25,6 @@ pcera_bot-*.tar
 # Ignore bot token and server crendetials
 *.token
 *.info
+
+# Ignore other things
+kk

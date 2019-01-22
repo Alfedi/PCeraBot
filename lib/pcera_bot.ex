@@ -6,7 +6,7 @@ defmodule PceraBot do
   require Logger
 
   def start(_type, _args) do
-    token = ExGram.Config.get(:ex_gram, :token)
+    token = ExGram.Config.get(:pcera_bot, :token)
 
     children = [
       supervisor(ExGram, []),

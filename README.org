@@ -1,6 +1,7 @@
 * PCeraBot
 Código del PCeraBot. Actualmente es funcional, pero tiene muchos errores.
 
-** TODO Solucionar el problema del token y la información del servidor
-** TODO Solucionar problemas con los mensajes y la descargado
-** TODO Añadir nuevas funcionalidades
+** Cosas pa' solucionar
+   - [x] Solucionar el problema del token y la información del servidor.
+   - [ ] Solucionar problemas con los mensajes y la descarga.
+   - [ ] Añadir nuevas funcionalidades.

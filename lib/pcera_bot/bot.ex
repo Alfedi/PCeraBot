@@ -20,16 +20,17 @@ defmodule PceraBot.Bot do
     end
   end
 
-  def handle({:command, "ip", _msg}, context) do
-    chat = ExGram.Config.get(:pcera_bot, :canal)
-    ip = System.cmd("curl", ["https://ipinfo.io/ip"])
-    ExGram.send_message(chat, elem(ip, 0))
-    answer(context, "El mensaje se ha enviado por tu chat supermegaultrasecreto")
+  def handle({:command, "ip", msg}, context) do
+    usuario = ExGram.Config.get(:pcera_bot, :user)
+    if msg.from.id == elem(Integer.parse(usuario), 0)  do
+      ip = System.cmd("curl", ["https://ipinfo.io/ip"])
+      answer(context, "La dirección ip actual es: " <> elem(ip, 0))
+    else
+      answer(context, "Buen intento compañero")
+    end
   end
-  
+
   def download(url) do
-    IO.puts("MAL, quiero mi mensaje")
-    System.cmd("youtube-dl",  ["--extract-audio", "--audio-format", "mp3", "--audio-quality", "0", "--embed-thumbnail", url], cd: "/home/alfedi/Música")
-    IO.puts("Acabado")
+    System.cmd("youtube-dl",  ["--extract-audio", "--audio-format", "mp3", "--audio-quality", "0", "--embed-thumbnail", url], cd: ExGram.Config.get(:pcera_bot, :carpeta))
   end
 end

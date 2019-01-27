@@ -4,7 +4,8 @@ use Mix.Config
 
 config :pcera_bot,
   token: {:system, "PCERA_TOKEN"},
-  canal: {:system, "CANAL_SECRETO"}
+  user: {:system, "USUARIO"},
+  carpeta: {:system, "MUSIC_DIR"}
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this

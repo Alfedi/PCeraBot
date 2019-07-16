@@ -22,7 +22,9 @@ defmodule PceraBot.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_gram, "~> 0.5.0"}
+      {:ex_gram, "~> 0.6.2"},
+      {:jason, ">= 1.0.0"},
+      {:wakeonlan, "~> 0.1.0"}
     ]
   end
 end

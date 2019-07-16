@@ -5,23 +5,23 @@ defmodule PceraBot do
 
   require Logger
 
-  def start(_type, _args) do
+  def start(_, _) do
     token = ExGram.Config.get(:pcera_bot, :token)
 
     children = [
       supervisor(ExGram, []),
-      supervisor(PceraBot.Bot, [:polling, token])
+      supervisor(PCeraBot.Bot, [:polling, token])
     ]
 
-    opts = [strategy: :one_for_one, name: PceraBot]
+    opts = [strategy: :one_for_one, name: PCeraBot]
 
     case Supervisor.start_link(children, opts) do
       {:ok, _} = ok ->
-        Logger.info("Starting Pcerabot")
+        Logger.info("Starting Bot")
         ok
 
       error ->
-        Logger.error("Error starting PceraBot")
+        Logger.error("There was a problem")
         error
     end
   end

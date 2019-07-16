@@ -3,8 +3,6 @@
 # Taken from Ironjanowar refraner bot. All credits to him.
 
 export PCERA_TOKEN=$(cat pcerabot.token)
-export USUARIO=$(cat kk.info)
-export MUSIC_DIR=$HOME/Music
 
 echo "Getting deps"
 mix deps.get

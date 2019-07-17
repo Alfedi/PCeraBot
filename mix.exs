@@ -23,8 +23,7 @@ defmodule PceraBot.MixProject do
   defp deps do
     [
       {:ex_gram, "~> 0.6.2"},
-      {:jason, ">= 1.0.0"},
-      {:wakeonlan, "~> 0.1.0"}
+      {:jason, ">= 1.0.0"}
     ]
   end
 end
